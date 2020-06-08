@@ -1,20 +1,20 @@
 'use strict';
 
 
-var specificService = require('../service/specificService');
+var page = require('../service/page');
 
 var controllers = {
   
-   getService1: function(req, res) {
-    specificService.findService(req, res, function(err, data) {
+   addPage: function(req, res) {
+    page.findPage(req, res, function(err, data) {
                if (err)
                    res.send(err);
                res.json(data);
            });
        },
        
-    getService2: function(req, res) {
-    specificService.findService(req, res, function(err, data) {
+    getHtml: function(req, res) {
+    page.getHtml(req, res, function(err, data) {
                 if (err)
                     res.send(err);
                 res.json(data);
