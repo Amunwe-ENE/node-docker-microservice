@@ -1,0 +1,20 @@
+{
+  "name": "express-docker-skeleton",
+  "version": "1.0.0",
+  "description": "skeleton codes",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amunwe-ENE/node-express-docker-skeleton.git"
+  },
+  "author": "Erastus Amunwe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amunwe-ENE/node-express-docker-skeleton/issues"
+  },
+  "homepage": "https://github.com/Amunwe-ENE/node-express-docker-skeleton#readme"
+}
