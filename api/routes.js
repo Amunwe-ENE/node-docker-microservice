@@ -2,16 +2,20 @@
 
 const controller = require('./controller');
 
-module.exports = function(app, baseURL) {
-   app.route(baseURL+'/add_page')
+module.exports = function(app, base) {
+    // for this end point we will only be accepting a post request
+   app.route(base+'/add_page').get(controller.addPage)
        .post(controller.addPage);
 
-   app.route(baseURL+'/retrieve_page_html')
+     // only get request with id accepted  
+   app.route(base+'/retrieve_page_html')
        .get(controller.getHtml);
 
-    app.route(baseURL+'/set_page_markdown')
+    // only post request with page id accepted
+    app.route(base+'/set_page_markdown')
     .post(controller.setMarkdown);
 
-    app.route(baseURL+'/list_pages')
+    // get and post request is accepted as well
+    app.route(base+'/list_pages')
     .get(controller.listPages);
 };
