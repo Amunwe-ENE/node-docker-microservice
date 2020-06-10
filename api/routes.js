@@ -3,6 +3,9 @@
 const controller = require('./controller');
 
 module.exports = function(app, base) {
+
+  app.route(base).get(controller.home).post(controller.home);
+
     // for this end point we will only be accepting a post request
    app.route(base+'/add_page').get(controller.addPage)
        .post(controller.addPage);
@@ -13,7 +16,7 @@ module.exports = function(app, base) {
 
     // only post request with page id accepted
     app.route(base+'/set_page_markdown')
-    .post(controller.setMarkdown);
+    .put(controller.setMarkdown);
 
     // get and post request is accepted as well
     app.route(base+'/list_pages')

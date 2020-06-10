@@ -1,39 +1,70 @@
 //if we need to make third party requests
-var request = require('request');
-// we will need to require mongoose schemas here
+const request = require('request');
 
-var fs = require('fs') // to write and read user's files 
-var showdown = require('showdown'); // to covert a markdown file to html is requested
-var converter = new showdown.Converter();// the converter has a method makeHtml that we will use
+// we will need to require mongoose schemas here
+const pageMd = require('../models/pageModel')
 
 // page object that we will export containing the methods needed by the controller
-var page = {
-  //this method recieve the request to save a file
-   savePage: function(req, res, next) {
-       //res.send('Your page was saved by me first');
-        next("Your page was saved");
+const page = {
+
+    //this method recieve the request to save a file
+   savePage: (req, res, next) => {
+
+    //destruct request params
+    const {page_name, page_url , page_owner, markdown} = req.body;
+
+    const  new_page = pageMd({
+              page_name,
+              page_owner,
+              page_url,
+              markdown
+            });
+    pageMd.findOne({page_url, page_owner}).exec((err, doc)=>{
+      if (err) throw err;
+
+      new_page.save();
+      next("Your page was saved");
+    })
+
    },
 
    // return the html version of the requested file
-   getHtml: function(req, res, next) {
+   getHtml: (req, res, next) => {
+
      // here we first confirm if the user has the requested file
      // and send it 
-    fs.readFile(global.appRoot+'/markdown/hello-world.md', 'utf-8', function(err, data) {
-        if (err) throw err;
-        next(converter.makeHtml(data));
-      });
-},
-  listPages: function(req, res, next){
+    next('<h1> hello Your Html</h1>')
+    },
+
+  listPages: (req, res, next) =>{
+
     // here we simply return the _id , page_name, of all the user's available pages in our database
+    pageMd.find((err, docs)=>{
+
+        if(err) throw err;
+
+        next(docs)
+    });
   },
-  setMardown: function(req, res, next){
-    //we check if the page id exist 
-    // then if it exists we save the page's mark
 
-    //if the markdown we recieve is a .md file then it means we have to replace the old markdown file
+  setMardown: (req, res, next)=>{
 
-    // if we are recieving the markdown in a json string format then it means that we will storing markdowns as string in the DB
-  }
+    const {markdown, page_id} = req.body;
+
+    pageMd.findById(page_id).exec((err, doc)=>{
+
+      if (err) throw err;
+
+      pageMd.updateOne({markdown},(err, res)=> {
+        if (err) throw err;
+
+        next('Markdown Saved succefully')
+      });
+
+    });
+    
+  },
+ 
 
 };
 
