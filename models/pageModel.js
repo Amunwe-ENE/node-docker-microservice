@@ -3,7 +3,7 @@
 // define and export the page schecma
 const mongoose = require('mongoose');
 //mongoose.set('bufferCommands', false);
-mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB_URL);
 
 var pageSchema = new mongoose.Schema({
     

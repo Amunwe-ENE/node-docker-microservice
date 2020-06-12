@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Constants
 const PORT = 8080;
 const HOST = '0.0.0.0';
-const base = '/api/v1'
+const base = '/api'
 
 const routes = require('./api/routes');
 routes(app,base);

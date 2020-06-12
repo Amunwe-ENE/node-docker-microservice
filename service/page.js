@@ -31,9 +31,16 @@ const page = {
    // return the html version of the requested file
    getHtml: (req, res, next) => {
 
-     // here we first confirm if the user has the requested file
-     // and send it 
-    next('<h1> hello Your Html</h1>')
+    pageMd.findById(req.page_id).exec((err, doc)=>{
+
+      if (err) throw err;
+
+        request({
+          uri: doc.url,
+        }, (error, response, body) => {
+          next(body);
+        });
+      });
     },
 
   listPages: (req, res, next) =>{
