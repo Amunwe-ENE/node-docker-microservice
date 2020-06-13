@@ -40,7 +40,7 @@ Authorization: ['Bearer Token']
 
 ## Success Response
 
-**Condition** : If everything is OK and an Account didn't exist for this User.
+**Condition** : If everything is OK  .
 
 **Code** : `200 `
 

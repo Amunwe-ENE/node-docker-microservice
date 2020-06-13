@@ -27,5 +27,5 @@ Token is provided with the request:
 Endpoints for viewing All pages that the Authenticated User
 has permissions to access.
 
-* [List all accesible pages](/docs/all_pages/get.md) : `GET /api/v1/list_pages`
+* [List all accesible pages](/docs/list_pages/get.md) : `GET /api/v1/list_pages`
 
