@@ -21,7 +21,7 @@ Each endpoint manipulates or displays pages related to the User whose
 Token is provided with the request:
 
 * [Add page](/api/v1/docs/add/post.md) : `POST /api/v1/add_page/`
-* [Update Page Markdow](/docs/markdown/put.md) : `PUT /api/v1/set_page_markdown/`
+* [Update Page Markdow](/api/v1/docs/markdown/put.md) : `PUT /api/v1/set_page_markdown/`
 * [Get Page Html](/api/v1/docs/html/get.md) : `Get /api/v1/retrieve_page_html/:page_id`
 
 ### All Page related
