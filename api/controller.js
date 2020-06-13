@@ -2,11 +2,11 @@
 
 const page = require('../service/page');
 const docs = require('../service/docs');
-
+const {signToken} = require('../service/handleTokens')
 var controllers = {
     ...docs,
     ...page,
-    
+    signToken
 //    addPage: (req, res) => {
 //     // put the logic to  save the file to to database or file system here
 //     res.end('Page saved succesfully')

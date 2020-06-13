@@ -5,31 +5,31 @@ const htmlize = require('./htmlize')
 const docs = {
     home: (req,res)=>{
 
-        fs.readFile(global.appRoot+'/docs/README.md', 'utf-8', (err, data) => {
+        fs.readFile(global.appRoot+'/api/v1/docs/README.md', 'utf-8', (err, data) => {
           if (err) throw err;
           res.send(htmlize(converter.makeHtml(data)));
         });
       },
     add: (req, res) =>{
-        fs.readFile(global.appRoot+'/docs/add/post.md', 'utf-8', (err, data) => {
+        fs.readFile(global.appRoot+'/api/v1/docs/add/post.md', 'utf-8', (err, data) => {
             if (err) throw err;
             res.send(htmlize(converter.makeHtml(data)));
           });
     },
     markdown: (req, res) =>{
-        fs.readFile(global.appRoot+'/docs/markdown/put.md', 'utf-8', (err, data) => {
+        fs.readFile(global.appRoot+'/api/v1/docs/markdown/put.md', 'utf-8', (err, data) => {
             if (err) throw err;
             res.send(htmlize(converter.makeHtml(data)));
           });
     },
     html: (req, res) =>{
-        fs.readFile(global.appRoot+'/docs/html/get.md', 'utf-8', (err, data) => {
+        fs.readFile(global.appRoot+'/api/v1/docs/html/get.md', 'utf-8', (err, data) => {
             if (err) throw err;
             res.send(htmlize(converter.makeHtml(data)));
           });
     },
     all_pages: (req, res) =>{
-        fs.readFile(global.appRoot+'/docs/list_pages/get.md', 'utf-8', (err, data) => {
+        fs.readFile(global.appRoot+'/api/v1/docs/list_pages/get.md', 'utf-8', (err, data) => {
             if (err) throw err;
             res.send(htmlize(converter.makeHtml(data)));
           });

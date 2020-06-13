@@ -30,4 +30,3 @@ has permissions to access.
 
 * [List all accesible pages](/docs/list_pages/get.md) : `GET /api/v1/list_pages/`
 
-</div>

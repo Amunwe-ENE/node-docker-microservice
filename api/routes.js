@@ -1,31 +1,31 @@
 'use strict';
 
 const controller = require('./controller');
-const authenticateToken = require('../service/validateToken')
+const {verify} = require('../service/handleTokens')
 module.exports = function(app, base) {
 
-  app.use('/v1', authenticateToken);
-
-  app.route('/docs').get(controller.home).post(controller.home);
-  app.route('/docs/add/post.md').get(controller.add);
-  app.route('/docs/html/get.md').get(controller.html);
-  app.route('/docs/markdown/put.md').get(controller.markdown);
-  app.route('/docs/all_pages/get.md').get(controller.all_pages);
 
 
+  app.route('/api/v1/docs').get(controller.home).post(controller.home);
+  app.route('/api/v1/docs/add/post.md').get(controller.add);
+  app.route('/api/v1/docs/html/get.md').get(controller.html);
+  app.route('/api/v1/docs/markdown/put.md').get(controller.markdown);
+  app.route('/api/v1/docs/all_pages/get.md').get(controller.all_pages);
+
+  
     // for this end point we will only be accepting a post request
    app.route(base+'/v1/add_page')
-       .post(controller.savePage);
+       .post(verify,controller.savePage);
 
      // only get request with id accepted  
-   app.route(base+'/v1/retrieve_page_html')
-       .get(controller.getHtml);
+   app.route(base+'/v1/retrieve_page_html/:page_id')
+       .get(verify, controller.getHtml);
 
     // only post request with page id accepted
     app.route(base+'/v1/set_page_markdown')
-    .put(controller.setMarkdown);
+    .put(verify,controller.setMarkdown);
 
     // get and post request is accepted as well
     app.route(base+'/v1/list_pages')
-    .get(controller.listPages);
+    .get(verify, controller.listPages);
 };
