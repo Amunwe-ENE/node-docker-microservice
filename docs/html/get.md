@@ -1,3 +1,4 @@
+<div class="container">
 # Show Page Html
 
 Get the page html for the specified page id  if current User has access permissions to it.
@@ -42,7 +43,7 @@ Authorization: ['Bearer Token']
 
 **Condition** : If everything is OK  .
 
-**Code** : `200 `
+**Code** : `200 OK`
 
 **Content example**
 
@@ -72,3 +73,6 @@ permissions.
 
 ```json
 {"detail": "You do not have permission to perform this action."}
+
+
+</div>

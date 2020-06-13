@@ -7,7 +7,7 @@ const pageMd = require('../models/pageModel')
 // page object that we will export containing the methods needed by the controller
 const page = {
 
-    //this method recieve the request to save a file
+    
    savePage: (req, res, next) => {
 
     //destruct request params
@@ -15,14 +15,19 @@ const page = {
 
     const  new_page = pageMd({
               page_title,
-              user_id: user.id,
+              users: [{
+                user_id:user.id}
+              ],
               page_url,
               markdown
             });
     pageMd.findOne({page_url, user_id:  user.id}).exec((err, doc)=>{
       if (err) throw err;
 
+      //  SAVE if  doc = {}
       new_page.save();
+
+      //dont save if doc is not empty, return the appropriate response
       next("Your page was saved");
     })
 
@@ -35,6 +40,7 @@ const page = {
 
       if (err) throw err;
 
+      //chech if the document/page was found be fore making the request
         request({
           uri: doc.url,
         }, (error, response, body) => {
@@ -45,7 +51,8 @@ const page = {
 
   listPages: (req, res, next) =>{
 
-    // here we simply return the _id , page_name, of all the user's available pages in our database
+    
+    // change query params to search accordin to user permisions
     pageMd.find((err, docs)=>{
 
         if(err) throw err;
@@ -58,11 +65,13 @@ const page = {
 
     const {markdown, page_id} = req.body;
 
+    // check if markdown is underfined
+
     pageMd.findById(page_id).exec((err, doc)=>{
 
       if (err) throw err;
 
-      pageMd.updateOne({markdown},(err, res)=> {
+      pageMd.updateOne({markdown:markdown},(err, res)=> {
         if (err) throw err;
 
         next('Markdown Saved succefully')

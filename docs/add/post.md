@@ -39,8 +39,8 @@ Authorization: ['Bearer Token']
 
 ```json
 {
-    "url": "https://Build-something-project-dot.com",
-     "title": "Build"
+    "url": "http://files.microdev.com/api/page/123/",
+     "title": "Build something "
 }
 ```
 
@@ -55,8 +55,8 @@ Authorization: ['Bearer Token']
 ```json
 {
     "_id": "78gig78ytf55n3s46dfgxb",
-    "title": "Build something project dot com",
-    "url": "http://files.microdev.com/api/page/123/",
+    "title": "Build something",
+    "url": "http://files.microdev.com/api/retrieve_page_html/78gig78ytf55n3s46dfgxb/",
     "user_id": "dtd54dghjsw3ed5k7"
 }
 ```
@@ -67,7 +67,7 @@ Authorization: ['Bearer Token']
 
 **Code** : `303 SEE OTHER`
 
-**Headers** : `Location: http://testserver/api/retrieve_page_html/123/`
+**Headers** : `Location: http://files.microdev.com/api/retrieve_page_html/78gig78ytf55n3s46dfgxb/`
 
 **Content** : `{}`
 
