@@ -6,11 +6,11 @@ module.exports = function(app, base) {
 
   app.use('/v1', authenticateToken);
 
-  app.route(base).get(controller.home).post(controller.home);
-  app.route(base+'/docs/add').get(controller.add);
-  app.route(base+'/docs/html').get(controller.html);
-  app.route(base+'/docs/markdown').get(controller.markdown);
-  app.route(base+'/docs/all_pages').get(controller.all_pages);
+  app.route('/docs').get(controller.home).post(controller.home);
+  app.route('/docs/add').get(controller.add);
+  app.route('/docs/html').get(controller.html);
+  app.route('/docs/markdown').get(controller.markdown);
+  app.route('/docs/all_pages').get(controller.all_pages);
 
 
     // for this end point we will only be accepting a post request
