@@ -6,7 +6,7 @@
 
 Open endpoints require no Authentication.
 
-* [Docs in JSON](/docs/v1) : `GET /api/v1/`
+* [Docs in JSON](/docs/v1/get.md) : `GET /api/v1/`
 
 ## Endpoints that require Authentication
 
@@ -18,14 +18,14 @@ request. A Token can be acquired from the auth microservice.
 Each endpoint manipulates or displays pages related to the User whose
 Token is provided with the request:
 
-* [Add page](/docs/add) : `POST /api/v1/add_page`
-* [Update Page Markdow](/docs/markdown) : `PUT /api/v1/set_page_markdown/:id`
-* [Get Page Html](/docs/html) : `Get /api/v1/retrieve_page_html/:id`
+* [Add page](/docs/add/post.md) : `POST /api/v1/add_page`
+* [Update Page Markdow](/docs/markdown/put.md) : `PUT /api/v1/set_page_markdown/:id`
+* [Get Page Html](/docs/html/get.md) : `Get /api/v1/retrieve_page_html/:id`
 
 ### All Page related
 
 Endpoints for viewing All pages that the Authenticated User
 has permissions to access.
 
-* [List all accesible pages](/docs/all_pages) : `GET /api/v1/list_pages`
+* [List all accesible pages](/docs/all_pages/get.md) : `GET /api/v1/list_pages`
 
