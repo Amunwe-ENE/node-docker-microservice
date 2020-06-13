@@ -11,6 +11,8 @@ module.exports = function(app, base) {
   app.route('/api/v1/docs/html/get.md').get(controller.html);
   app.route('/api/v1/docs/markdown/put.md').get(controller.markdown);
   app.route('/api/v1/docs/all_pages/get.md').get(controller.all_pages);
+  app.route('/api/v1/docs/get_token/get.md').get(controller.get_token);
+  app.route('/api/v1/docs/v1/get.md').get(controller.v1);
 
   app.route('/api/v1/get_token/:account_id').get(controller.signToken);
   

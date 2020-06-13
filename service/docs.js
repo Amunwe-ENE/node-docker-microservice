@@ -34,6 +34,18 @@ const docs = {
             res.send(htmlize(converter.makeHtml(data)));
           });
     },
+    v1: (req, res) =>{
+      fs.readFile(global.appRoot+'/api/v1/docs/v1/get.md', 'utf-8', (err, data) => {
+          if (err) throw err;
+          res.send(htmlize(converter.makeHtml(data)));
+        });
+  },
+  get_token: (req, res) =>{
+    fs.readFile(global.appRoot+'/api/v1/docs/get_token/get.md', 'utf-8', (err, data) => {
+        if (err) throw err;
+        res.send(htmlize(converter.makeHtml(data)));
+      });
+},
 }
 
 module.exports = docs;
