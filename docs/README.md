@@ -1,4 +1,4 @@
-<div class="container">
+
 # External Static pages Microservice Docs
 * [baseUrl](#) : ` https:files.microdev.com/api/`
 
