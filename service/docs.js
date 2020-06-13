@@ -11,25 +11,25 @@ const docs = {
         });
       },
     add: (req, res) =>{
-        fs.readFile(global.appRoot+'/docs/user/post.md', 'utf-8', (err, data) => {
+        fs.readFile(global.appRoot+'/docs/add/post.md', 'utf-8', (err, data) => {
             if (err) throw err;
             res.send(converter.makeHtml(data));
           });
     },
     markdown: (req, res) =>{
-        fs.readFile(global.appRoot+'/docs/user/put.md', 'utf-8', (err, data) => {
+        fs.readFile(global.appRoot+'/docs/markdown/put.md', 'utf-8', (err, data) => {
             if (err) throw err;
             res.send(converter.makeHtml(data));
           });
     },
     html: (req, res) =>{
-        fs.readFile(global.appRoot+'/docs/user/get.md', 'utf-8', (err, data) => {
+        fs.readFile(global.appRoot+'/docs/html/get.md', 'utf-8', (err, data) => {
             if (err) throw err;
             res.send(converter.makeHtml(data));
           });
     },
     all_pages: (req, res) =>{
-        fs.readFile(global.appRoot+'/docs/other_pages/get.md', 'utf-8', (err, data) => {
+        fs.readFile(global.appRoot+'/docs/list_pages/get.md', 'utf-8', (err, data) => {
             if (err) throw err;
             res.send(converter.makeHtml(data));
           });

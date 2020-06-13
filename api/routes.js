@@ -14,8 +14,8 @@ module.exports = function(app, base) {
 
 
     // for this end point we will only be accepting a post request
-   app.route(base+'/v1/add_page').get(controller.addPage)
-       .post(controller.addPage);
+   app.route(base+'/v1/add_page')
+       .post(controller.savePage);
 
      // only get request with id accepted  
    app.route(base+'/v1/retrieve_page_html')

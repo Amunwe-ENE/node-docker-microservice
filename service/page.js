@@ -54,7 +54,7 @@ const page = {
     });
   },
 
-  setMardown: (req, res, next)=>{
+  setMarkdown: (req, res, next)=>{
 
     const {markdown, page_id} = req.body;
 
