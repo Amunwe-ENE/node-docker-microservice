@@ -8,38 +8,46 @@ const pageMd = require('../models/pageModel')
 const page = {
 
     
-   savePage: (req, res, next) => {
+   savePage: (req, res) => {
 
     //destruct request params
-    const {page_title, page_url , page_owner, user, markdown} = req.body;
-
+    const {title, url , markdown} = req.body;
+    const {user} = req.user;
+    console.log(user);
+    if (!title || !url) return res.sendStatus(401);
     const  new_page = pageMd({
-              page_title,
+              title,
               users: [{
-                user_id:user.id}
+                account_id:user.account_id}
               ],
-              page_url,
+              url,
               markdown
             });
-    pageMd.findOne({page_url, user_id:  user.id}).exec((err, doc)=>{
-      if (err) throw err;
-
-      //  SAVE if  doc = {}
-      new_page.save();
+    pageMd.findOne({url}).exec((err, doc)=>{
+      if (err){
+        return res.sendStatus(401)
+      } 
 
       //dont save if doc is not empty, return the appropriate response
-      next("Your page was saved");
+      if(doc) return res.sendStatus(401);
+      //  SAVE if  doc = {}
+      if(doc === null ){
+      new_page.save();
+      return res.send("saved")
+      }
+     
+      
     })
 
    },
 
    // return the html version of the requested file
    getHtml: (req, res, next) => {
-
-    pageMd.findById(req.page_id).exec((err, doc)=>{
+    const {page_id} = req.params;
+    pageMd.findById(page_id).exec((err, doc)=>{
 
       if (err) throw err;
-
+      if(doc === null) return res.sendStatus(404)
       //chech if the document/page was found be fore making the request
         request({
           uri: doc.url,

@@ -48,7 +48,20 @@ Authorization: ['Bearer Token']
 **Content example**
 
 ```html
-
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The page title</title>
+    </head>
+    <body>
+        <nav></nav>
+        <div class="container">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quae, quisquam amet eveniet doloribus necessitatibus sequi eos assumenda? Similique illo asperiores eveniet facilis delectus tempore, molestiae veniam! Repudiandae, labore illum?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi incidunt eius laudantium libero! Totam earum consequuntur ducimus nemo optio, hic odit officiis blanditiis, in neque, libero nam tenetur illum doloribus!</p>
+        </div>
+        <footer></footer>
+    </body>
+</html>
     
 
 ```

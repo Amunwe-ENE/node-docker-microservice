@@ -15,13 +15,13 @@ const verify = (req, res, next)  =>{
 }   
 const signToken =  (req, res) => {
   
-  const { user_id } = req.params;
+  const { account_id } = req.params;
   
-  if(!user_id) return res.sendStatus(404)
+  if(!account_id) return res.sendStatus(404)
       //if user log in success, generate a JWT token for the user with a secret key
-      jwt.sign({user:{user_id}}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' },(err, token) => {
+      jwt.sign({user:{account_id}}, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' },(err, token) => {
           if(err) { console.log(err); return res.sendStatus(401) }    
-          res.send(token);
+          res.json({token});
       });
  
 };

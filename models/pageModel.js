@@ -10,7 +10,7 @@ var pageSchema = new mongoose.Schema({
     title:String,
     url: String,
     users:[
-      {user_id: String,
+      {account_id: String,
       permission:{type:String, default: 'OO'}
       }
     ],
