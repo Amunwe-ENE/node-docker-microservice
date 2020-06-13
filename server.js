@@ -2,6 +2,7 @@
 //require express
 const express = require('express');
 const bodyParser = require('body-parser'); // require body-parser
+require('dotenv').config()
 
 global.appRoot = __dirname;
 

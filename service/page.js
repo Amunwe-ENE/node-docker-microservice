@@ -11,15 +11,15 @@ const page = {
    savePage: (req, res, next) => {
 
     //destruct request params
-    const {page_name, page_url , page_owner, markdown} = req.body;
+    const {page_title, page_url , page_owner, user, markdown} = req.body;
 
     const  new_page = pageMd({
-              page_name,
-              page_owner,
+              page_title,
+              user_id: user.id,
               page_url,
               markdown
             });
-    pageMd.findOne({page_url, page_owner}).exec((err, doc)=>{
+    pageMd.findOne({page_url, user_id:  user.id}).exec((err, doc)=>{
       if (err) throw err;
 
       new_page.save();

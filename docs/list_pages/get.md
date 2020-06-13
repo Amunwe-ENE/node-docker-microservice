@@ -13,6 +13,19 @@ Includes their own pages if they have one.
 
 **Data constraints** : `{}`
 
+**Header constraints**
+
+The Token used to List the User's pages can be sent in the
+header. Values passed in the `Authorisation` header will pass  checks for validity:
+
+- If 0 characters, or not provided, ignore.
+- If valid characters, Json sent back.
+- If expired, ignore.
+
+```
+Authorization: ['Bearer Token']
+```
+
 ## Success Responses
 
 **Condition** : User can not see any pages.
@@ -34,7 +47,7 @@ Includes their own pages if they have one.
 [
     {
         "page": {
-            "id": 123,
+            "_id": 123,
             "title": "Lots of Admins Project",
             "url": "http://file.microdev.com/api/add/index.html"
         },
@@ -42,7 +55,7 @@ Includes their own pages if they have one.
     },
     {
         "account": {
-            "id": 234,
+            "_id": 234,
             "title": "Feel free to View this",
             "url": "http://files.microdev/api/server.js"
         },
@@ -50,7 +63,7 @@ Includes their own pages if they have one.
     },
     {
         "account": {
-            "id": 345,
+            "_id": 345,
             "title": "Mr Owner Project",
             "url": "http://testserver/api/accounts/345/"
         },

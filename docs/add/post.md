@@ -21,12 +21,26 @@ Provide  url and tile of the page to be created.
     "title": "[unicode 64 chars max]"
 }
 ```
+**Header constraints**
+
+The Token used to create the User's pages can be sent in the
+header. Values passed in the `Authorisation` header will pass  checks for validity:
+
+- If 0 characters, or not provided, ignore.
+- If valid characters, save.
+- If expired, ignore.
+
+```
+Authorization: ['Bearer Token']
+```
+
 
 **Data example** All fields must be sent.
 
 ```json
 {
-    "url": "https://Build-something-project-dot.com"
+    "url": "https://Build-something-project-dot.com",
+     "title": "Build"
 }
 ```
 
@@ -40,19 +54,20 @@ Provide  url and tile of the page to be created.
 
 ```json
 {
-    "id": 123,
+    "_id": "78gig78ytf55n3s46dfgxb",
     "title": "Build something project dot com",
-    "url": "http://files.microdev.com/api/page/123/"
+    "url": "http://files.microdev.com/api/page/123/",
+    "user_id": "dtd54dghjsw3ed5k7"
 }
 ```
 
 ## Error Responses
 
-**Condition** : If Account already exists for User.
+**Condition** : If Page already exists for User.
 
 **Code** : `303 SEE OTHER`
 
-**Headers** : `Location: http://testserver/api/accounts/123/`
+**Headers** : `Location: http://testserver/api/retrieve_page_html/123/`
 
 **Content** : `{}`
 

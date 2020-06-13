@@ -1,71 +1,74 @@
 # Show Page Html
 
-Get the page html for the specified page id of the currently Authenticated User.
+Get the page html for the specified page id  if current User has access permissions to it.
 
-**URL** : `/api/retrieve_page_html/`
+**URL** : `/api/retrieve_page_html/:page_id`
+
+**URL Parameters** : `page_id=[string]` where `page_id` is the ID of the page on the
+server.
 
 **Method** : `GET`
 
 **Auth required** : YES
 
-**Permissions required** : None
+**Permissions required** : 
+User is at least one of the following in relation to the page requested:
+
+* Owner `OO`
+* Admin `AA`
+* Viewer `VV`
 
 **Data constraints**
 
-Provide page id of page to be retrieved.
 
-```json
-{
-    "page_id": "[unicode 64 chars max]"
-}
+**Header constraints**
+
+The Token used to retrieve the User's pages can be sent in the
+header. Values passed in the `Authorisation` header will pass  checks for validity:
+
+- If 0 characters, or not provided, ignore.
+- If valid characters, Retrieved.
+- If expired, ignore.
+
+```
+Authorization: ['Bearer Token']
 ```
 
-**Data example** All fields must be sent.
 
-```json
-{
-    "page_id": "Build something project dot com"
-}
-```
+**Data example** `{}`
+
 
 ## Success Response
 
 **Condition** : If everything is OK and an Account didn't exist for this User.
 
-**Code** : `201 CREATED`
+**Code** : `200 `
 
 **Content example**
 
-```json
-{
-    "id": 123,
-    "name": "Build something project dot com",
-    "url": "http://testserver/api/accounts/123/"
-}
+```html
+
+    
+
 ```
+
 
 ## Error Responses
 
-**Condition** : If Account already exists for User.
+**Condition** : If page does not exist with `id` of provided `page_id` parameter.
 
-**Code** : `303 SEE OTHER`
-
-**Headers** : `Location: http://file.microdev.com/api/retrieve_page_html/123/`
+**Code** : `404 NOT FOUND`
 
 **Content** : `{}`
 
 ### Or
 
-**Condition** : If fields are missed.
+**Condition** : If page exists but Authorized User does not have required
+permissions.
 
-**Code** : `400 BAD REQUEST`
+**Code** : `403 FORBIDDEN`
 
-**Content example**
+**Content** :
 
 ```json
-{
-    "name": [
-        "This field is required."
-    ]
-}
-```
+{"detail": "You do not have permission to perform this action."}

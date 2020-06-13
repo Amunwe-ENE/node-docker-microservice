@@ -7,9 +7,10 @@ mongoose.connect(process.env.MONGODB_URL,  {useNewUrlParser: true, useUnifiedTop
 
 var pageSchema = new mongoose.Schema({
     
-    page_name:String,
-    page_url: String,
-    page_owner:String
+    title:String,
+    url: String,
+    user_id:String,
+    markdown: String
   });
 
 const Page = mongoose.model('Page', pageSchema);
