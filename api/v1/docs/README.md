@@ -1,6 +1,6 @@
 
 # External Static pages Microservice Docs
-* [baseUrl](#) : ` https:files.microdev.com/api/`
+* [baseUrl](#) : ` https://files.microdev.com/api/`
 
 
 ## Open Endpoints

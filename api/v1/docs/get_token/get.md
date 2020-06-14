@@ -1,7 +1,7 @@
 
 # Get a Token 
 
-Get a token that you can use to interact with this microservices
+Get a token that you can use to interact with this microservices.
 Copy the token and send it as part of the request header when making requests
 to endpoints that reqiure authentication
 
