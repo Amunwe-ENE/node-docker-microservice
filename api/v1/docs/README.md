@@ -6,9 +6,7 @@
 ## Open Endpoints
 
 Open endpoints require no Authentication.<br />
-<button
- class="btn btn-dark">👇</button
-><button class="btn btn-success" disabled >Click the Links Bellow for specific documentation</button>
+<button class="btn-dark">👇</button><button class=" btn-success" disabled >Click the Links Bellow for specific documentation</button>
 
 * 👉<span class="btn btn-outline-primary">[Docs in JSON](/api/v1/docs/v1/get.md)</span> : `GET /api/v1/`
 
