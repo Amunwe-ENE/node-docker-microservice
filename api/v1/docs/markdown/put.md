@@ -54,13 +54,13 @@ Empty data can be PUT to erase the markdown:
 ```
 Authorization: 'Bearer r6r56yfehdq5dk5a'
 ```
-
+<span class="bg-dark">
 ```json
 {
     "page_id": "8yft78v6576r6r56yfehdq5dk5a",
     "markdown": "Hello **World**"
 }
-```
+```</span>
 
 ## Success Responses
 

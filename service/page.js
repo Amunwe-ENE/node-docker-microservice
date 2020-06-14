@@ -64,30 +64,52 @@ const page = {
     pageMd.find((err, docs)=>{
 
         if(err) throw err;
-
-        next(docs)
+        if(!docs.length<1){
+        let newDocs = [];
+        for(let i in docs) {
+          newDocs.push(
+            {
+              page:{
+                _id: i._id,
+                title: i.title,
+                url: i.url
+              },
+              permission: i.users[0].permission
+            }
+          );
+        };
+        res.json(newDocs)
+      }else{
+        res.json(docs)
+      }
     });
   },
 
-  setMarkdown: (req, res, next)=>{
+  setMarkdown: (req, res)=>{
 
     const {markdown, page_id} = req.body;
-
+    const {account_id} = req.user.user;
     // check if markdown is underfined
 
     pageMd.findById(page_id).exec((err, doc)=>{
 
       if (err) throw err;
-
+      for(let i of doc.users){
+        if(i.account_id = account_id && i.permission == 'VV' ) 
+          return res.sendStatus(403);
+      }
       pageMd.updateOne({markdown:markdown},(err, res)=> {
-        if (err) throw err;
+        if (err) return res.status(500).json(err);
 
-        next('Markdown Saved succefully')
+        res.json('Markdown Saved succefully')
       });
 
     });
     
   },
+  v1: (req, res)=>{
+    res.json(require('./v1'));
+  }
  
 
 };

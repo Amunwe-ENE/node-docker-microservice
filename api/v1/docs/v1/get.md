@@ -21,15 +21,16 @@ Used to collect a the Docs in JSON Format.
         "_id": "93144b288eb1fdccbe46d6fc0f241a51766ecd3d",
         "end_point": "/add_page",
         "documentation_url": "https://files.microdev.com/docs/add/post.md",
-        "data_constrans": {
+        "data_constrants": {
             "url": "[unicode 64 chars max]",
             "title": "[unicode 64 chars max]"
         },
-        "responses":[
+        "responses":{
+            "success":{},
+            "errors":[
 
-        ]
-            
-        
+            ]
+         },
     },
    
 ]

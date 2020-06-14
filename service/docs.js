@@ -30,7 +30,7 @@ const docs = {
     },
     all_pages: (req, res) =>{
         fs.readFile(global.appRoot+'/api/v1/docs/list_pages/get.md', 'utf-8', (err, data) => {
-            if (err) throw err;
+            if (err) return res.sendStatus(500) ;
             res.send(htmlize(converter.makeHtml(data)));
           });
     },

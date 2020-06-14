@@ -14,8 +14,12 @@ module.exports = function(app, base) {
   app.route('/api/v1/docs/get_token/get.md').get(controller.get_token);
   app.route('/api/v1/docs/v1/get.md').get(controller.v1);
 
-  app.route('/api/v1/get_token/:account_id').get(controller.signToken);
-  
+  app.route('/api/v1/get_token/:account_id')
+  .get(controller.signToken);
+
+  app.route(base+'/v1')
+  .get(controller.v1);
+
     // for this end point we will only be accepting a post request
    app.route(base+'/v1/add_page')
        .post(verify,controller.savePage);
@@ -31,4 +35,8 @@ module.exports = function(app, base) {
     // get and post request is accepted as well
     app.route(base+'/v1/list_pages')
     .get(verify, controller.listPages);
+
+    app.route('*').get((req,res)=>{
+      res.status(404).send("Plesea use the documentation Correctly. Double check the route as well as the http method you used for this request")
+    })
 };

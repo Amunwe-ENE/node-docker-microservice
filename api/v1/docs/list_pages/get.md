@@ -49,23 +49,23 @@ Authorization: ['Bearer Token']
         "page": {
             "_id": 123,
             "title": "Lots of Admins Project",
-            "url": "http://file.microdev.com/api/add/index.html"
+            "url": "http://file.microdev.com/api/page/index.html"
         },
         "permission": "AA"
     },
     {
-        "account": {
+        "page": {
             "_id": 234,
             "title": "Feel free to View this",
-            "url": "http://files.microdev/api/server.js"
+            "url": "http://files.microdev.com/api/page/server.js"
         },
         "permission": "VV"
     },
     {
-        "account": {
+        "page": {
             "_id": 345,
             "title": "Mr Owner Project",
-            "url": "http://testserver/api/accounts/345/"
+            "url": "http://files.microdev.com/api/page/345/"
         },
         "permission": "OO"
     }

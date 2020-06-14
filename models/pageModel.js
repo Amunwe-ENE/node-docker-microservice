@@ -1,5 +1,7 @@
+process.on('unhandledRejection', error => {
+  console.log('unhandledRejection', error.message);
+});
 // require mongoose
-
 // define and export the page schecma
 const mongoose = require('mongoose');
 //mongoose.set('bufferCommands', false);
@@ -11,7 +13,11 @@ var pageSchema = new mongoose.Schema({
     url: String,
     users:[
       {account_id: String,
-      permission:{type:String, default: 'OO'}
+      permission:{ 
+        type: String, 
+        enum: ['OO', 'AA', 'VV'], 
+        default: 'OO' 
+       },
       }
     ],
     markdown: String
