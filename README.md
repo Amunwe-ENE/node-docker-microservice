@@ -9,4 +9,3 @@ Go to the [Documentation](api/v1/docs/)
     ```npm start```
 
 #       Installations With Docker
-  //To Do
